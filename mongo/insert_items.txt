@@ -1,0 +1,6 @@
+use userstore;
+var bulk = db.users.initializeUnorderedBulkOp();
+bulk.insert(   { firstname: "Robert", lastname: "Griesemer", id: 1 });
+bulk.insert(   { firstname: "Rob", lastname: "Pike", id: 2 });
+bulk.insert(   { firstname: "Ken", lastname: "Thompson", id: 3 });
+bulk.execute();

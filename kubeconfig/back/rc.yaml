@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: api-userstore
+  namespace: userstore
+  labels:
+    name: api-userstore
+spec:
+  replicas: 1
+  selector:
+    name: api-userstore
+  template:
+    metadata:
+      labels:
+        name: api-userstore
+    spec:
+      containers:
+        - name: api-userstore
+          image: api-userstore:v1
+          ports:
+            - name: backend-port
+              containerPort: 9000

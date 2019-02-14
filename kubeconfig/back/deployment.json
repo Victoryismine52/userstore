@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "namespace":"userstore",
+    "name": "api-userstore"
+  },
+  "spec": {
+    "replicas": 1,
+    "template":{
+      "metadata": {
+        "labels": {
+          "app": "api-userstore"
+        }
+      },
+      "spec":{
+        "containers": [
+          {
+            "name": "db",
+            "image": "mongo",
+            "ports": [
+              {
+                "containerPort": 27017
+              }
+            ]
+          },
+          {
+            "name": "backend",
+            "image": "api-userstore:v1",
+            "ports": [
+              {
+                "containerPort": 9000
+              }
+            ]
+          }
+        ]
+
+      }
+    }
+  }
+}
